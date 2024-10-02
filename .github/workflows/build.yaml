@@ -25,9 +25,11 @@ jobs:
           Compress-Archive @compressArgs
 
       - name: Choco Build
+        uses: crazy-max/ghaction-chocolatey@v3
+        with:
+          args: pack .\choco\test_choco_github_actions.nuspec --outputdirectory build
+      
+      - name: Show Artifacts
         run: |
-          ls .\choco\tools
-          winget install -e --id Chocolatey.Chocolatey
-          New-Item "build" -ItemType Directory
-          choco pack .\chocotest_choco_githug_actions.nuspec --outputdirectory .\build
+          ls .\choco\tools\test.zip
           ls .\build
