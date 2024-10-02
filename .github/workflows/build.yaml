@@ -7,16 +7,20 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
+
       - name: Run test.ps1
         run: |
           (Get-Location).Path
           .\test.ps1
-      - name: Change Folder To choco
+
+      - name: Zip
         run: |
-          (Get-Location).Path
-          cd .\choco
-          (Get-Location).Path
-      - name: Check List Contents Of choco
-        run: |
-          (Get-Location).Path
-          ls
+          $compress-args = @{
+            Path = @(
+              ".\test.ps1"
+            )
+            CompressionLevel = "Fastest"
+            Destination = ".\choco\tools\test.zip"
+          }
+          Compress-Archive @compress-args
+          tree /F
