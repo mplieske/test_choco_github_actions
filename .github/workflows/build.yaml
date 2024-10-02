@@ -5,5 +5,8 @@ jobs:
   Build:
     runs-on: windows-latest
     steps:
-      - run: |
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Run test.ps1
+        run: |
           .\test.ps1
