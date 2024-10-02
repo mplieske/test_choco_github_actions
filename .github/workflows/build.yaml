@@ -23,8 +23,11 @@ jobs:
             Destination = ".\choco\tools\test.zip"
           }
           Compress-Archive @compressArgs
-          tree /F .
 
       - name: Choco Build
         run: |
+          ls .\choco\tools
           winget install -e --id Chocolatey.Chocolatey
+          New-Item "build" -ItemType Directory
+          choco pack .\chocotest_choco_githug_actions.nuspec --outputdirectory .\build
+          ls .\build
