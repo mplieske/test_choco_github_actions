@@ -1,6 +1,10 @@
 name: Build Choco With GitHub Actions
 run-name: "${{ github.actor }} is building the choco packge :)"
-on: [push]
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+      - "!v[0-9]+.[0-9]+.[0-9]+-rc"
 jobs:
   Build:
     runs-on: windows-latest
