@@ -23,4 +23,4 @@ jobs:
             Destination = ".\choco\tools\test.zip"
           }
           Compress-Archive @compress-args
-          tree /F
+          tree /F .
