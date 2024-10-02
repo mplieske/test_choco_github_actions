@@ -15,12 +15,12 @@ jobs:
 
       - name: Zip
         run: |
-          $compress-args = @{
+          $compressArgs = @{
             Path = @(
               ".\test.ps1"
             )
             CompressionLevel = "Fastest"
             Destination = ".\choco\tools\test.zip"
           }
-          Compress-Archive @compress-args
+          Compress-Archive @compressArgs
           tree /F .
