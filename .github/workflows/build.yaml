@@ -24,3 +24,7 @@ jobs:
           }
           Compress-Archive @compressArgs
           tree /F .
+
+      - name: Choco Build
+        run: |
+          winget install -e --id Chocolatey.Chocolatey
