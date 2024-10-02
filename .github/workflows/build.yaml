@@ -5,8 +5,18 @@ jobs:
   Build:
     runs-on: windows-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout Repo
         uses: actions/checkout@v4
       - name: Run test.ps1
         run: |
+          (Get-Location).Path
           .\test.ps1
+      - name: Change Folder To choco
+        run: |
+          (Get-Location).Path
+          cd .\choco
+          (Get-Location).Path
+      - name: Check List Contents Of choco
+        run: |
+          (Get-Location).Path
+          ls
